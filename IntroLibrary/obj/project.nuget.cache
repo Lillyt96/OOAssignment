@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "43lBQ13+8elzZHnCattimEmPcG1mt9ocPf3EIySGWOVIHX7RWXJ3jVqq5E4+KKcQym0Tm28cCWmTMtDHJ4hJVA==",
+  "success": true,
+  "projectFilePath": "C:\\Users\\KEBAB\\Desktop\\LearnC#\\IntroLibrary\\IntroLibrary.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\KEBAB\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512"
+  ],
+  "logs": []
+}

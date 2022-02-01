@@ -1,0 +1,12 @@
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\bin\Debug\net6.0\IntroLibrary.deps.json
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\bin\Debug\net6.0\IntroLibrary.dll
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\bin\Debug\net6.0\ref\IntroLibrary.dll
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\bin\Debug\net6.0\IntroLibrary.pdb
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\IntroLibrary.csproj.AssemblyReference.cache
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\IntroLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\IntroLibrary.AssemblyInfoInputs.cache
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\IntroLibrary.AssemblyInfo.cs
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\IntroLibrary.csproj.CoreCompileInputs.cache
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\IntroLibrary.dll
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\ref\IntroLibrary.dll
+C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\IntroLibrary.pdb
