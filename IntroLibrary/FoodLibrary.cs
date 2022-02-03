@@ -58,47 +58,77 @@ namespace FoodLibrary
         }
         public void MainMenu()
         {
-            Console.WriteLine(Storage[0][0]?.Name);
-            Console.WriteLine(Storage[0][1]?.Name);
-            Console.WriteLine(Storage[1][0]?.Name);
-            Console.WriteLine(Storage[2][0]?.Name);
             Console.WriteLine("Choose an option:");
             Console.WriteLine("1 - Add food");
-            Console.WriteLine("2 - Display contents");
+            Console.WriteLine("2 - Remove food");
             Console.WriteLine("3 - Find expired");
-            Console.WriteLine("4 - Read in storage");
-            Console.WriteLine("5 - Write out storage");
-            Console.WriteLine("6 - Exit");
+            Console.WriteLine("4 - Display contents");
+            Console.WriteLine("5 - Read in storage");
+            Console.WriteLine("6 - Write out storage");
+            Console.WriteLine("7 - Exit");
             Console.Write("\r\nSelect an option: ");
             
             int option = int.Parse(Console.ReadLine());
-
-            switch(option)
+            if (option < 1 || option > 7)
             {
-                case 1: //Add Food
-                    AddFoodMenu();
-                break;
-            }            
+                Console.Write("Please select a valid option");
+                MainMenu();
+            }
+            else
+            {
+                switch(option)
+                {
+                    case 1: //Add Food
+                        AddFoodMenu();
+                    break;
+                }      
+            }
+        
         }
         public void AddToLocation(Food FoodType)
         {
+        
             if  (FoodType.StorageTemperature > -27.0 && FoodType.StorageTemperature <-5.0)
             {
-                Storage[0][counter.Freezer] = FoodType;
-                counter.Freezer++;
-                Console.WriteLine("Item {0} added to the Freezer storage", FoodType.Name);
+                if (counter.Freezer == 20)
+                {
+                    Console.WriteLine("Error - Freezer storage is full. Returning to the main menu.");
+                    MainMenu();
+                }
+                else
+                {
+                    Storage[0][counter.Freezer] = FoodType;
+                    counter.Freezer++;
+                    Console.WriteLine("Item {0} added to the Freezer storage", FoodType.Name);
+                }
             }
             else if (FoodType.StorageTemperature >-2.0 && FoodType.StorageTemperature <6.0) // For Fridge
             {
-                Storage[1][counter.Fridge] = FoodType;
-                counter.Fridge++;
-                Console.WriteLine("Item {0} added to the Fridge storage", FoodType.Name);
+                if (counter.Fridge == 50)
+                {
+                    Console.WriteLine("Error - Fridge storage is full. Returning to the main menu.");
+                    MainMenu();
+                }
+                else
+                {
+                    Storage[1][counter.Fridge] = FoodType;
+                    counter.Fridge++;
+                    Console.WriteLine("Item {0} added to the Fridge storage", FoodType.Name);
+                }
             } 
             else if (FoodType.StorageTemperature >8.0 && FoodType.StorageTemperature <25.0) // For Pantry
             {
-                Storage[2][counter.Pantry] = FoodType;
-                counter.Pantry++;
-                Console.WriteLine("Item {0} added to the pantry storage", FoodType.Name);
+                if (counter.Fridge == 50)
+                {
+                    Console.WriteLine("Error - Fridge storage is full. Returning to the main menu.");
+                    MainMenu();
+                }
+                else
+                {
+                    Storage[2][counter.Pantry] = FoodType;
+                    counter.Pantry++;
+                    Console.WriteLine("Item {0} added to the pantry storage", FoodType.Name);  
+                }                
             } 
             else
             {
@@ -115,45 +145,92 @@ namespace FoodLibrary
             Console.Write("\r\nSelect an option: ");
 
             int AddFoodOption = int.Parse(Console.ReadLine());
-            switch(AddFoodOption)
+            if (AddFoodOption < 1 || AddFoodOption > 4)
             {
-                case 1:
-                    //code for adding meat
-                    Food.VeganMeat Meat = new Food.VeganMeat();
-                    Console.Write("Enter meat name: ");
-                    Meat.Name = Console.ReadLine();
+                Console.Write("Please select a valid option");
+                AddFoodMenu();
+            }
+            else
+            {
+                switch(AddFoodOption)
+                {
+                    case 1:
+                        //code for adding meat
+                        Food.VeganMeat Meat = new Food.VeganMeat();
+                        Console.Write("Enter meat name: ");
+                        Meat.Name = Console.ReadLine();
 
-                    Console.Write("Enter meat cut: ");
-                    Meat.Cut = Console.ReadLine();
+                        Console.Write("Enter meat cut: ");
+                        Meat.Cut = Console.ReadLine();
 
-                    Console.Write("Enter meat weight (kgs): ");
-                    Meat.Weight = float.Parse(Console.ReadLine());
+                        Console.Write("Enter meat weight (kgs): ");
+                        Meat.Weight = float.Parse(Console.ReadLine());
 
-                    Console.Write("Enter meat storage temp: ");
-                    Meat.StorageTemperature = float.Parse(Console.ReadLine());
+                        Console.Write("Enter meat storage temp: ");
+                        float StorageTemperature = float.Parse(Console.ReadLine());
+                        if (StorageTemperature < -27.0 || StorageTemperature > 25.0)
+                        {
+                            Console.WriteLine("Error Invalid - Food item out of the storage temperature range.");
+                            Console.WriteLine("Item has not been added.");
+                            ReturnToMenu();
+                        }
+                        else
+                        {
+                            Meat.StorageTemperature = StorageTemperature;
+                        }
 
-                    Console.Write("Enter meat useby date: "); //make consistent formating
-                    Meat.UseByDate = Console.ReadLine();
+                        Console.Write("Enter meat useby date DD/MM/YYYY: "); //make consistent formating
+                        Meat.UseByDate = Console.ReadLine();
 
-                    Console.Write("Enter meat packaging: ");
-                    Meat.Packaging = Console.ReadLine();
+                        Console.Write("Enter meat packaging: ");
+                        Meat.Packaging = Console.ReadLine();
 
-                    AddToLocation(Meat);
-                    ReturnToMenu();
-                    break;
+                        AddToLocation(Meat);
+                        ReturnToMenu();
+                        break;
 
-                case 2:
-                    Console.Write("add grain code");
-                    break;
-                
-                case 3:
-                    Console.Write("add fruit code");
-                    break;
-                case 4:
-                    Console.Write("add vegetable code");
-                    break;
+                    case 2:
+                        Console.Write("add grain code");
+                        break;
+                    
+                    case 3:
+                        Console.Write("add fruit code");
+                        break;
+                    case 4:
+                        Console.Write("add vegetable code");
+                        break;
+                }
             }
         }
+        public void RemoveItem()
+        {
+            Console.WriteLine("Which storage location would you like to remove an item from?");
+            Console.WriteLine("1 - Freezer");
+            Console.WriteLine("2 - Fridge");
+            Console.WriteLine("3 - Pantry");
+            Console.Write("\r\nSelect an option: ");
+            
+            int RemoveFoodLocation = int.Parse(Console.ReadLine());
+            if (RemoveFoodLocation < 1 || RemoveFoodLocation > 3)
+            {
+                Console.Write("Please select a valid option");
+                RemoveItem();
+            }
+            else
+            {
+                switch(RemoveFoodLocation)
+                {
+                    case 1:
+                        Console.WriteLine("Enter a location number between 0 and " + (counter.Freezer - 1));
+                        Console.WriteLine("Item " + Storage[0][counter.Freezer - 1].Name + " has been removed.");
+                        break;
+                    case 2:
+                        Console.WriteLine("Enter a location number between 0 and " + (counter.Fridge - 1));
+                        break;
+                }
+            }
+        }
+
         public void ReturnToMenu()
         {
             Console.WriteLine("Would you like to add another item? (Y/N)");
