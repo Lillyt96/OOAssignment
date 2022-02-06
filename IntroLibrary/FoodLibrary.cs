@@ -3,39 +3,35 @@ namespace FoodLibrary
 
 {
     public class Food
-    
     {
         public string Name;
         public double StorageTemperature;
         public string Packaging;
-        public class VeganMeat : Food
-        {
-            public string Cut;
-            public double Weight;
-            public string UseByDate;
-
-        }
-        public class Grain : Food
-        {
-            public string Type;
-            public double Volume;
-            public string BestBeforeDate;
-
-        }
-        public class Fruit : Food
-        {
-            public string Type;
-            public int NumberOfPieces;
-            public string BestBeforeDate;
-
-        }
-        public class Vegetable : Food
-        {
-            public double Weight;
-            public string BestBeforeDate;
-        }
-
     }
+    public class VeganMeat : Food
+    {
+        public string Cut;
+        public double Weight;
+        public int UseByDate;
+    }
+    public class Grain : Food
+    {
+        public string Type;
+        public double Volume;
+        public int BestBeforeDate;
+    }
+    public class Fruit : Food
+    {
+        public string Type;
+        public int NumberOfPieces;
+        public int UseByDate;
+    }
+    public class Vegetable : Food
+    {
+        public double Weight;
+        public int BestBeforeDate;
+    }
+
     public class Counter
     {
             public int Pantry = 0; //change to read the counter in file 
@@ -80,8 +76,16 @@ namespace FoodLibrary
                 {
                     case 1: //Add Food
                         AddFoodMenu();
-                    break;
-                }      
+                        break;
+                    case 2: //Remove item
+                        RemoveItemMenu();
+                        break;
+                    case 3:
+                        break;
+
+
+                }   
+                   
             }
         
         }
@@ -156,7 +160,7 @@ namespace FoodLibrary
                 {
                     case 1:
                         //code for adding meat
-                        Food.VeganMeat Meat = new Food.VeganMeat();
+                        VeganMeat Meat = new VeganMeat();
                         Console.Write("Enter meat name: ");
                         Meat.Name = Console.ReadLine();
 
@@ -172,21 +176,20 @@ namespace FoodLibrary
                         {
                             Console.WriteLine("Error Invalid - Food item out of the storage temperature range.");
                             Console.WriteLine("Item has not been added.");
-                            ReturnToMenu();
+                            break;
                         }
                         else
                         {
                             Meat.StorageTemperature = StorageTemperature;
                         }
 
-                        Console.Write("Enter meat useby date DD/MM/YYYY: "); //make consistent formating
-                        Meat.UseByDate = Console.ReadLine();
+                        Console.Write("Enter meat useby date YYMMDD: "); //make consistent formating
+                        Meat.UseByDate = int.Parse(Console.ReadLine());
 
                         Console.Write("Enter meat packaging: ");
                         Meat.Packaging = Console.ReadLine();
 
                         AddToLocation(Meat);
-                        ReturnToMenu();
                         break;
 
                     case 2:
@@ -200,9 +203,20 @@ namespace FoodLibrary
                         Console.Write("add vegetable code");
                         break;
                 }
+                        
+                Console.WriteLine("Would you like to add another item? (Y/N)");
+                string c = Console.ReadLine();
+                if (c == "Y" || c == "y") 
+                {
+                    AddFoodMenu();
+                }
+                else if (c == "N" || c == "n")
+                {
+                    MainMenu();
+                }
             }
-        }
-        public void RemoveItem()
+        }   
+        public void RemoveItemMenu()
         {
             Console.WriteLine("Which storage location would you like to remove an item from?");
             Console.WriteLine("1 - Freezer");
@@ -213,43 +227,139 @@ namespace FoodLibrary
             int RemoveFoodLocation = int.Parse(Console.ReadLine());
             if (RemoveFoodLocation < 1 || RemoveFoodLocation > 3)
             {
-                Console.Write("Please select a valid option");
-                RemoveItem();
+                Console.WriteLine("Please select a valid option");
+                RemoveItemMenu();
             }
             else
             {
                 switch(RemoveFoodLocation)
                 {
                     case 1:
-                        Console.WriteLine("Enter a location number between 0 and " + (counter.Freezer - 1));
-                        Console.WriteLine("Item " + Storage[0][counter.Freezer - 1].Name + " has been removed.");
+                        RemoveItem(counter.Freezer, 0);
                         break;
+
                     case 2:
-                        Console.WriteLine("Enter a location number between 0 and " + (counter.Fridge - 1));
+                        RemoveItem(counter.Fridge, 1);
+                        break;
+                    case 3:
+                        RemoveItem(counter.Pantry, 2);
                         break;
                 }
             }
-        }
-
-        public void ReturnToMenu()
-        {
-            Console.WriteLine("Would you like to add another item? (Y/N)");
+            Console.WriteLine("Would you like to remove another item?");
             string c = Console.ReadLine();
             if (c == "Y") 
             {
-                AddFoodMenu();
+                RemoveItemMenu();
             }
             else if (c == "N")
             {
                 MainMenu();
             }
+
+        }
+        public void RemoveItem(int StorageCounter, int StorageNumber)
+        {
+
+            if (StorageCounter != 0)
+            {
+                Console.WriteLine("Enter a location number between 0 and " + (StorageCounter - 1));
+                int pos = int.Parse(Console.ReadLine());
+                Console.WriteLine("Item " + Storage[StorageNumber][pos].Name + " has been removed.");    
+
+                for (var i = pos; i < StorageCounter ; i++) 
+                {
+                    Storage[StorageNumber][i] = Storage[StorageNumber][i + 1];
+                }
+
+                if(StorageNumber == 0)
+                {
+                    counter.Freezer--;
+                }
+                else if(StorageNumber == 1)
+                {
+                    counter.Fridge--;
+                }
+                else if(StorageNumber == 2)
+                {
+                    counter.Pantry--;
+                }
+            }
             else
             {
-                Console.WriteLine("Please enter Y or N");
-                ReturnToMenu();
+                Console.WriteLine("Storage is empty. Returning to main menu");
+                MainMenu();
+            }
+        }
+        public void FindExpired()
+        {
+            //should cycle through all items in the Find expired storage facility looking for expired food. If food has expired, the program should output the details, including the location, to the user. 
+            for (int i = 0; i < counter.Freezer; i++) //Freezer check
+            {
+                if(Storage[0][i] is VeganMeat || Storage[0][i] is Fruit) 
+                {
+                    VeganMeat veganMeat = (VeganMeat)Storage[0][i];
+                    if (veganMeat.UseByDate < 20220105)
+                    {
+                        Console.WriteLine("Food Details: ");
+                        PrintFood(veganMeat);
+                        Console.WriteLine("Food Storage Location [0][{0}]", i);
+                    }
+                }
+
+            }
+
+        }
+        public void PrintFood(Food FoodItem)
+        {
+            if (FoodItem is VeganMeat) 
+            {
+                VeganMeat veganMeat = (VeganMeat)FoodItem;
+
+                Console.WriteLine(
+                    "Vegan Meat Name: " + veganMeat.Name
+                    + " Vegan Meat Storage Temperature: " + veganMeat.StorageTemperature
+                    + " Vegan Meat Packaging Type: " + veganMeat.Packaging 
+                    + " Vegan Meat Cut " + veganMeat.Cut 
+                    // + " Vegan Meat Usedby Date: " + veganMeat.UseByDate
+                    + " Vegan Meat Weight: " + veganMeat.Weight
+                );
+            } 
+            // else if (FoodItem == Food.Grain)
+            // {
+            //         Console.WriteLine(
+            //         "Grain Name: " + Grain.Name
+            //         + " Grain Storage Temperature: " + Grain.StorageTemperature
+            //         + " Grain Packaging Type: " + Grain.Packaging 
+            //         + " Grain Type " + Grain.Type 
+            //         + " Grain Volume: " + Grain.Volume
+            //         + " Grain Best Before Date: " + Grain.BestBeforeDate
+            //     );
+            // }
+            // else if (FoodItem == Food.Fruit)
+            // {
+            //         Console.WriteLine(
+            //         "Fruit Name: " + Fruit.Name
+            //         + " Fruit Storage Temperature: " + Fruit.StorageTemperature
+            //         + " Fruit Packaging Type: " + Fruit.Packaging 
+            //         + " Fruit Type " + Fruit.Weight 
+            //         + " Fruit Number of pieces: " + Fruit.NumberOfPieces
+            //         + " Fruit Best Before Date: " + Fruit.BestBeforeDate
+            //     );                  
+            // }
+            // else if (FoodItem == Food.Vegetable)
+            // {
+                    
+            //         Console.WriteLine(
+            //         "Vegetable Name: " + Food.Vegetable.Name
+            //         + " Vegetable Storage Temperature: " + Food.Vegetable.StorageTemperature
+            //         + " Vegetable Packaging Type: " + Food.Vegetable.Packaging 
+            //         + " Vegetable Weight " + Food.Vegetable.Weight 
+            //         + " Vegetable Best Before Date: " + Food.Vegetable.BestBeforeDate
+            //     );            
             }
         }
     }
 
-}
+
 

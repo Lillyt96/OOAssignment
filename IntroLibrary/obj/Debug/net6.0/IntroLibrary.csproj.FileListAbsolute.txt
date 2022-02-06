@@ -10,3 +10,15 @@ C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\IntroLibrary.csproj
 C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\IntroLibrary.dll
 C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\ref\IntroLibrary.dll
 C:\Users\KEBAB\Desktop\LearnC#\IntroLibrary\obj\Debug\net6.0\IntroLibrary.pdb
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\bin\Debug\net6.0\IntroLibrary.deps.json
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\bin\Debug\net6.0\IntroLibrary.dll
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\bin\Debug\net6.0\ref\IntroLibrary.dll
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\bin\Debug\net6.0\IntroLibrary.pdb
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\obj\Debug\net6.0\IntroLibrary.csproj.AssemblyReference.cache
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\obj\Debug\net6.0\IntroLibrary.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\obj\Debug\net6.0\IntroLibrary.AssemblyInfoInputs.cache
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\obj\Debug\net6.0\IntroLibrary.AssemblyInfo.cs
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\obj\Debug\net6.0\IntroLibrary.csproj.CoreCompileInputs.cache
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\obj\Debug\net6.0\IntroLibrary.dll
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\obj\Debug\net6.0\ref\IntroLibrary.dll
+C:\Users\Lillyt\Desktop\GIT\OOAssignment\IntroLibrary\obj\Debug\net6.0\IntroLibrary.pdb
