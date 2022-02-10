@@ -39,19 +39,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Lillyt\\.nuget\\packages\\": {}
+    "C:\\Users\\KEBAB\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Lillyt\\Desktop\\GIT\\OOAssignment\\IntroLibrary\\IntroLibrary.csproj",
+      "projectUniqueName": "C:\\Users\\KEBAB\\Desktop\\LearnC#\\IntroLibrary\\IntroLibrary.csproj",
       "projectName": "IntroLibrary",
-      "projectPath": "C:\\Users\\Lillyt\\Desktop\\GIT\\OOAssignment\\IntroLibrary\\IntroLibrary.csproj",
-      "packagesPath": "C:\\Users\\Lillyt\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Lillyt\\Desktop\\GIT\\OOAssignment\\IntroLibrary\\obj\\",
+      "projectPath": "C:\\Users\\KEBAB\\Desktop\\LearnC#\\IntroLibrary\\IntroLibrary.csproj",
+      "packagesPath": "C:\\Users\\KEBAB\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\KEBAB\\Desktop\\LearnC#\\IntroLibrary\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\Lillyt\\AppData\\Roaming\\NuGet\\NuGet.Config"
+        "C:\\Users\\KEBAB\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net6.0"

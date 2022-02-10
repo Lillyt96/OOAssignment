@@ -1,10 +1,10 @@
 {
   "version": 2,
-  "dgSpecHash": "E4Sl/lBwZ7jUbb3SprJTjlzboWmMUyZgoxcPutHM0ofEywku/pPeOzVqIarmaO6be56qZpoP0vEfEQXa/5BGWg==",
+  "dgSpecHash": "43lBQ13+8elzZHnCattimEmPcG1mt9ocPf3EIySGWOVIHX7RWXJ3jVqq5E4+KKcQym0Tm28cCWmTMtDHJ4hJVA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Lillyt\\Desktop\\GIT\\OOAssignment\\IntroLibrary\\IntroLibrary.csproj",
+  "projectFilePath": "C:\\Users\\KEBAB\\Desktop\\LearnC#\\IntroLibrary\\IntroLibrary.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Lillyt\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512"
+    "C:\\Users\\KEBAB\\.nuget\\packages\\dapper\\2.0.123\\dapper.2.0.123.nupkg.sha512"
   ],
   "logs": []
 }

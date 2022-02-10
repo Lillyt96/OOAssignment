@@ -10,10 +10,12 @@ namespace IntroUI
     {
         static void Main(string[] args)
         {
-            Menu menu = new Menu();
-            menu.MainMenu();
-        }
+            Functions ApplyFunction = new Functions();
+            ApplyFunction.ReadFile();   
+            ApplyFunction.MainMenu();          
+
            
+        }
     }
 }
 
