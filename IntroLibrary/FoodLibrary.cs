@@ -57,7 +57,7 @@ namespace FoodLibrary
         {   
            //creating an object for the file
             Lines = new ReadFile();
-            string FilePath = @"C:\Users\KEBAB\Desktop\LearnC#\Input.txt";
+            string FilePath = @"C:\Users\Lillyt\Desktop\GIT\OOAssignment\Input.txt";
             List<string> lines = File.ReadAllLines(FilePath).ToList();
             Lines.File = lines;
 
@@ -90,7 +90,19 @@ namespace FoodLibrary
 
                 if (FoodDataArray[0] == "Meat")
                 {
-                    AddToLocation(CreateVeganMeatItem(FoodDataArray[1], FoodDataArray[2], FoodDataArray[3], FoodDataArray[4], FoodDataArray[5], FoodDataArray[6]));
+                    CreateVeganMeatItem(FoodDataArray[1], FoodDataArray[2], FoodDataArray[3], FoodDataArray[4], FoodDataArray[5], FoodDataArray[6]);
+                }
+                else if (FoodDataArray[0] == "Grain")
+                {
+                    CreateGrainItem(FoodDataArray[1], FoodDataArray[2], FoodDataArray[3], FoodDataArray[4], FoodDataArray[5], FoodDataArray[6]);
+                }
+                else if (FoodDataArray[0] == "Fruit")
+                {
+                    CreateFruitItem(FoodDataArray[1], FoodDataArray[2], FoodDataArray[3], FoodDataArray[4], FoodDataArray[5], FoodDataArray[6]);
+                }
+                else if (FoodDataArray[0] == "Vegetable")
+                {
+                    CreateVegetableItem(FoodDataArray[1], FoodDataArray[2], FoodDataArray[3], FoodDataArray[4], FoodDataArray[5]);
                 }
             }
         }
@@ -180,10 +192,6 @@ namespace FoodLibrary
                 Console.WriteLine("Item {0} added to the pantry storage", FoodType.Name);  
             }                
         } 
-            // else
-            // {
-            //     Console.WriteLine("Error Invalid - Food item out of the storage temperature range");
-            // }
         }
         public void AddFoodMenu()
         {
@@ -207,36 +215,101 @@ namespace FoodLibrary
                     case 1:
                         //code for adding meat
                         Console.Write("Enter meat name: ");
-                        string Name = Console.ReadLine();
+                        string MeatName = Console.ReadLine();
 
                         Console.Write("Enter meat cut: ");
-                        string Cut = Console.ReadLine();
+                        string MeatCut = Console.ReadLine();
 
                         Console.Write("Enter meat weight (between 0.2 - 5.0): ");
 
-                        string Weight = Console.ReadLine();
+                        string MeatWeight = Console.ReadLine();
 
                         Console.Write("Enter meat storage temp between -27.0 and 25.0: ");
 
-                        string StorageTemperature = Console.ReadLine();
+                        string MeatStorageTemperature = Console.ReadLine();
                         
                         Console.Write("Enter meat useby date YYYYMMDD: "); 
-                        string UseByDate = Console.ReadLine();
+                        string MeatUseByDate = Console.ReadLine();
 
                         Console.Write("Enter meat packaging: ");
-                        string Packaging = Console.ReadLine();
-                        AddToLocation(CreateVeganMeatItem(Name, Cut, Weight, StorageTemperature, UseByDate, Packaging));
+                        string MeatPackaging = Console.ReadLine();
+                        
+                        CreateVeganMeatItem(MeatName, MeatCut, MeatWeight, MeatStorageTemperature, MeatUseByDate, MeatPackaging);
                         break;
 
                     case 2:
-                        Console.Write("add grain code");
+                        //code for adding grain
+                        Console.Write("Enter grain name: ");
+                        string GrainName = Console.ReadLine();
+
+                        Console.Write("Enter grain type: ");
+                        string GrainType = Console.ReadLine();
+
+                        Console.Write("Enter grain weight (between 0.2 - 5.0): ");
+
+                        string GrainWeight = Console.ReadLine();
+
+                        Console.Write("Enter grain storage temp between -27.0 and 25.0: ");
+
+                        string GrainStorageTemperature = Console.ReadLine();
+                        
+                        Console.Write("Enter grain best before date YYYYMMDD: "); 
+                        string GrainBestBeforeDate = Console.ReadLine();
+
+                        Console.Write("Enter grain packaging: ");
+                        string GrainPackaging = Console.ReadLine();
+                        
+                        CreateGrainItem(GrainName, GrainType, GrainWeight, GrainStorageTemperature, GrainBestBeforeDate, GrainPackaging);
+
                         break;
                     
                     case 3:
-                        Console.Write("add fruit code");
+                        // code for adding fruit
+                        Console.Write("Enter fruit name: ");
+                        string FruitName = Console.ReadLine();
+
+                        Console.Write("Enter fruit type: ");
+                        string FruitType = Console.ReadLine();
+
+                        Console.Write("Enter fruit number of pieces (between 1 - 20): ");
+
+                        string FruitNumberOfPieces = Console.ReadLine();
+
+                        Console.Write("Enter fruit storage temp between -27.0 and 25.0: ");
+
+                        string FruitStorageTemperature = Console.ReadLine();
+                        
+                        Console.Write("Enter fruit useby date YYYYMMDD: "); 
+                        string FruitUsebyDate = Console.ReadLine();
+
+                        Console.Write("Enter fruit packaging: ");
+                        string FruitPackaging = Console.ReadLine();
+                        
+                        CreateFruitItem(FruitName, FruitType, FruitNumberOfPieces, FruitStorageTemperature, FruitUsebyDate, FruitPackaging);
+
                         break;
+
                     case 4:
-                        Console.Write("add vegetable code");
+                        //code for adding vegetable
+                        Console.Write("Enter vegetable name: ");
+                        string VegetableName = Console.ReadLine();
+
+                        Console.Write("Enter vegetable weight (between 0.2 - 5.0): ");
+
+                        string VegetableWeight = Console.ReadLine();
+
+                        Console.Write("Enter vegetable storage temp between -27.0 and 25.0: ");
+
+                        string VegetableStorageTemperature = Console.ReadLine();
+                        
+                        Console.Write("Enter vegetable best before date YYYYMMDD: "); 
+                        string VegetableBestBeforeDate = Console.ReadLine();
+
+                        Console.Write("Enter vegetable packaging: ");
+                        string VegetablePackaging = Console.ReadLine();
+                        
+                        CreateVegetableItem(VegetableName, VegetableWeight, VegetableStorageTemperature, VegetableBestBeforeDate, VegetablePackaging);
+
                         break;
                 }
                         
@@ -410,11 +483,11 @@ namespace FoodLibrary
 
                 Console.WriteLine(
                     "Vegan Meat Name: " + veganMeat.Name
-                    + "\nVegan Meat Storage Temperature: " + veganMeat.StorageTemperature
-                    + "\nVegan Meat Packaging Type: " + veganMeat.Packaging 
                     + "\nVegan Meat Cut " + veganMeat.Cut 
-                    + "\nVegan Meat Usedby Date: " + veganMeat.UseByDate
                     + "\nVegan Meat Weight: " + veganMeat.Weight
+                    + "\nVegan Meat Storage Temperature: " + veganMeat.StorageTemperature
+                    + "\nVegan Meat Usedby Date: " + veganMeat.UseByDate
+                    + "\nVegan Meat Packaging Type: " + veganMeat.Packaging 
                 );
             } 
             else if (FoodItem is Grain)
@@ -422,11 +495,11 @@ namespace FoodLibrary
                 Grain grain = (Grain)FoodItem;
                 Console.WriteLine(
                     "Grain Name: " + grain.Name
-                    + "\nGrain Storage Temperature: " + grain.StorageTemperature
-                    + "\nGrain Packaging Type: " + grain.Packaging 
                     + "\nGrain Type " + grain.Type 
                     + "\nGrain Volume: " + grain.Volume
+                    + "\nGrain Storage Temperature: " + grain.StorageTemperature
                     + "\nGrain Best Before Date: " + grain.BestBeforeDate
+                    + "\nGrain Packaging Type: " + grain.Packaging 
                 );
             }
             else if (FoodItem is Fruit)
@@ -434,11 +507,11 @@ namespace FoodLibrary
                 Fruit fruit = (Fruit)FoodItem;
                 Console.WriteLine(
                     "Fruit Name: " + fruit.Name
-                    + "\nFruit Storage Temperature: " + fruit.StorageTemperature
-                    + "\nFruit Packaging Type: " + fruit.Packaging 
                     + "\nFruit Type " + fruit.Type 
                     + "\nFruit Number of pieces: " + fruit.NumberOfPieces
+                    + "\nFruit Storage Temperature: " + fruit.StorageTemperature
                     + "\nFruit Used By Date: " + fruit.UseByDate
+                    + "\nFruit Packaging Type: " + fruit.Packaging 
                 );                  
             }
             else if (FoodItem is Vegetable)
@@ -446,10 +519,10 @@ namespace FoodLibrary
                 Vegetable vegetable = (Vegetable)FoodItem;
                 Console.WriteLine(
                     "Vegetable Name: " + vegetable.Name
-                    + "\nVegetable Storage Temperature: " + vegetable.StorageTemperature
-                    + "\nVegetable Packaging Type: " + vegetable.Packaging 
                     + "\nVegetable Weight " + vegetable.Weight 
+                    + "\nVegetable Storage Temperature: " + vegetable.StorageTemperature
                     + "\nVegetable Best Before Date: " + vegetable.BestBeforeDate
+                    + "\nVegetable Packaging Type: " + vegetable.Packaging 
                 );            
             }
         }
@@ -493,48 +566,98 @@ namespace FoodLibrary
             }
 
         }
-        public VeganMeat CreateVeganMeatItem(String Name, String Cut, String Weight, String StorageTemperature, String UseByDate, String Packaging)
+        public void CreateVeganMeatItem(String Name, String Cut, String Weight, String StorageTemperature, String UseByDate, String Packaging)
         {
-            VeganMeat Meat = new VeganMeat();
-            Meat.Name = Name;
-            Meat.Cut = Cut;
             double weight = double.Parse(Weight);
-            if (weight > 0.2 && weight < 5.0)
-            {
-                Meat.Weight = weight;
-            }
-            else
-            {
-                Console.WriteLine("Error Invalid - Food item out of the weight range range.");
-                Console.WriteLine("Item will not be added.");
-            }
             double storagetemperature = double.Parse(StorageTemperature);
-            if (storagetemperature > -27.0 && storagetemperature < 25.0)
-            {
-                Meat.StorageTemperature = storagetemperature;
-            }
-            else
-            {
-                Console.WriteLine("Error Invalid - Food item out of the storage temperature range. \nItem has not been added.");
-                break; //the issue here is that the storagetemp is being constructed with the default value of 0. not running out of the loop. 
-            }
             int usebydate = int.Parse(UseByDate);
 
-            if(usebydate > Today.Date)
+            if (weight > 0.2 && weight < 5.0 && storagetemperature > -27.0 && storagetemperature < 25.0 && usebydate > Today.Date)
             {
+                VeganMeat Meat = new VeganMeat();
+                Meat.Name = Name;
+                Meat.Cut = Cut;
+                Meat.Weight = weight;
+                Meat.StorageTemperature = storagetemperature;
                 Meat.UseByDate = usebydate;
+                Meat.Packaging = Packaging;
+                AddToLocation(Meat);
             }
             else
             {
-                Console.WriteLine("Error Invalid - Food item use by is in the past.");
-                Console.WriteLine("Item will not be added.");                        
+                Console.WriteLine("Error Invalid -Item {0} will not be added.", Name);
             }
-
-            Meat.Packaging = Packaging;
-
-            return Meat;
             
         }
+        public void CreateGrainItem(String Name, String Type, String Volume, String StorageTemperature, String BestBeforeDate, String Packaging)
+        {
+            double volume = double.Parse(Volume);
+            double storagetemperature = double.Parse(StorageTemperature);
+            int bestbeforedate = int.Parse(BestBeforeDate);
+
+            if (volume > 0.2 && volume < 5.0 && storagetemperature > -27.0 && storagetemperature < 25.0 && bestbeforedate > Today.Date)
+            {
+                Grain GrainItem = new Grain();
+                GrainItem.Name = Name;
+                GrainItem.Type = Type;
+                GrainItem.Volume = volume;
+                GrainItem.StorageTemperature = storagetemperature;
+                GrainItem.BestBeforeDate = bestbeforedate;
+                GrainItem.Packaging = Packaging;
+                AddToLocation(GrainItem);
+            }
+            else
+            {
+                Console.WriteLine("Error Invalid -Item {0} will not be added.", Name);
+            }
+            
+        }
+        public void CreateFruitItem(String Name, String Type, String NumberofPieces, String StorageTemperature, String UseByDate, String Packaging)
+        {
+            int numberofPieces = int.Parse(NumberofPieces);
+            double storagetemperature = double.Parse(StorageTemperature);
+            int usebydate = int.Parse(UseByDate);
+
+            if (numberofPieces > 1 && numberofPieces < 20 && storagetemperature > -27.0 && storagetemperature < 25.0 && usebydate > Today.Date)
+            {
+                Fruit FruitItem = new Fruit();
+                FruitItem.Name = Name;
+                FruitItem.Type = Type;
+                FruitItem.NumberOfPieces = numberofPieces;
+                FruitItem.StorageTemperature = storagetemperature;
+                FruitItem.UseByDate = usebydate;
+                FruitItem.Packaging = Packaging;
+                AddToLocation(FruitItem);
+            }
+            else
+            {
+                Console.WriteLine("Error Invalid -Item {0} will not be added.", Name);
+            }
+            
+        }
+       
+        public void CreateVegetableItem(String Name, String Weight, String StorageTemperature, String BestBeforeDate, String Packaging)
+        {
+            double weight = double.Parse(Weight);
+            double storagetemperature = double.Parse(StorageTemperature);
+            int bestbeforedate = int.Parse(BestBeforeDate);
+
+            if (weight > 0.2 && weight < 5.0 && storagetemperature > -27.0 && storagetemperature < 25.0 && bestbeforedate > Today.Date)
+            {
+                Vegetable VegetableItem = new Vegetable();
+                VegetableItem.Name = Name;
+                VegetableItem.Weight = weight;
+                VegetableItem.StorageTemperature = storagetemperature;
+                VegetableItem.BestBeforeDate = bestbeforedate;
+                VegetableItem.Packaging = Packaging;
+                AddToLocation(VegetableItem);
+            }
+            else
+            {
+                Console.WriteLine("Error Invalid -Item {0} will not be added.", Name);
+            }
+            
+        } 
 
     }
 }
