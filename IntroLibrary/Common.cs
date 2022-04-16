@@ -29,7 +29,12 @@ namespace FoodLibrary
                 inputString = Console.ReadLine();
                 validFormat = double.TryParse(inputString, out storageTemp);
             }
-
+            if (storageTemp < -27.0 || storageTemp > 25.0)
+            {
+                Console.WriteLine("Please enter a Valid weight between 0.2 and 5.0");
+                inputString = Console.ReadLine();
+                CheckValidweight(inputString);
+            }
             storageTemp = double.Parse(inputString);
             return storageTemp;
         }
